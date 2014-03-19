@@ -27,7 +27,7 @@ def agregar_producto(request):
 		formulario = ProductoForm(request.POST, request.FILES)
 		if formulario.is_valid():
 			formulario.save()
-			return HttpResponseRedirect('/tienda')
+			return HttpResponseRedirect('/producto/nuevo/')
 	else:
 		formulario = ProductoForm()
 	return render_to_response('productoform.html', {'formulario':formulario}, context_instance=RequestContext(request))
