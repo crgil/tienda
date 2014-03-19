@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang='es'>
+  <head>
+	<title>lista de prodctos</title>
+	<meta charset='utf-8'>
+  </head>
+  <body>
+    <h1>Lista de Productos</h1>
+    {% for elemento in lista %}
+	<ul>
+	  <li><strong>{{elemento.codigoproducto}}</strong></li>
+	  <li>{{elemento.nombre_prod}}</li>
+	  <li>{{elemento.existencia}}</li>
+	</ul>
+	{% endfor %}
+	<a href="/receta/nueva">Agregar un producto</a>
+  </body>
+</html>
