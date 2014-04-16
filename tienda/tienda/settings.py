@@ -72,6 +72,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    '/home/charlie/Escritorio/tienda/tienda/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -111,7 +112,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-	'tienda/plantillas',
+	'templates/principal',
 )
 
 INSTALLED_APPS = (
@@ -156,3 +157,10 @@ LOGGING = {
         },
     }
 }
+
+#configuraciones para enviar mensajes usando gmail
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'gilitobar@gmail.com'
+EMAIL_HOST_PASSWORD = 'bond007a'
+EMAIL_PORT = 587

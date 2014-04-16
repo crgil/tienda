@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% comment %} Aqui van comentarios {% endcomment %}
+
+{% block titulo %} Inicio {% endblock %}
+
+{% block encabezado %} 
+	<h1>Sistema para Tienda ;) </h1>
+{% endblock %}
+
+{% block contenido %}
+  <p>
+	  Actualmente tenemos registrados: 
+     {% with total=productos.count %} 
+		{{total}} productos{{total|pluralize}}
+	 {% endwith %}
+  </p>
+	<ul>		
+	  {% for dato in productos %}
+	  <li class="{% cycle 'impar' 'par' %}">{{dato.nombre_prod|title}}</li>
+	  {% empty %}
+	  <li>No hay productos registrados aún.</li>
+	  {% endfor %}
+	</ul>
+	<a href='/producto/nuevo'>Agregar un nuevo producto</a>
+{% endblock %}

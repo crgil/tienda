@@ -1,5 +1,8 @@
 #encoding:utf-8
 from django.db import models
+from django.contrib import admin
+from datetime import datetime    
+from django.contrib.auth.models import User, check_password
 
 # Create your models here.
 class tienda(models.Model):
@@ -69,6 +72,7 @@ class producto (models.Model):
 	marca = models.CharField(max_length = 200)
 	precio_u = models.DecimalField(max_digits=10, decimal_places=2)
 	existencia = models.IntegerField(default = 0)
+	status = models.IntegerField(default = 1)
 
 	def __unicode__(self):
 		return self.nombre_prod
@@ -105,10 +109,10 @@ class proveedor (models.Model):
 class factura (models.Model):
 	serie = models.CharField(max_length = 20)
 	no_factura = models.IntegerField()
-	fecha_factura = models.DateTimeField('Fecha Factura')
+	fecha_factura = models.DateTimeField('Fecha Factura', default=datetime.now())
 	vendedor = models.ForeignKey(empleado)
 	sucursal = models.ForeignKey(sucursal)
-	estado = models.IntegerField()
+	estado = models.IntegerField(default=1)
 	cliente = models.ForeignKey(cliente)
 	total = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -133,7 +137,13 @@ class detalle_factura (models.Model):
 		return self.producto
 		return self.cantidad
 		return self.precio_u_venta
-	
+
+class detalle_facturaInline(admin.TabularInline):
+    model = detalle_factura
+
+class facturaAdmin(admin.ModelAdmin):
+    inlines = (detalle_facturaInline,)
+
 class credito_venta (models.Model):
 	factura_venta = models.ForeignKey(factura)
 	fecha_credito_venta = models.DateTimeField('Fecha credito')

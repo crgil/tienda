@@ -15,6 +15,8 @@ from principal.models import detalle_compra
 from principal.models import credito_compra
 from principal.models import Abono_compra
 from django.contrib import admin
+from principal.models import detalle_facturaInline
+from principal.models import facturaAdmin
 
 admin.site.register(tienda)
 admin.site.register(sucursal)
@@ -23,7 +25,7 @@ admin.site.register(empleado)
 admin.site.register(producto)
 admin.site.register(cliente)
 admin.site.register(proveedor)
-admin.site.register(factura)
+#admin.site.register(factura)
 admin.site.register(detalle_factura)
 admin.site.register(credito_venta)
 admin.site.register(Abono)
@@ -31,3 +33,4 @@ admin.site.register(compra)
 admin.site.register(detalle_compra)
 admin.site.register(credito_compra)
 admin.site.register(Abono_compra)
+admin.site.register(factura, facturaAdmin)
